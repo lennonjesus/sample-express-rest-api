@@ -40,7 +40,7 @@ router.get('/:id', function(req, res) {
 
 });
 
-router.put(function(req, res){
+router.put('/:id', function(req, res){
 
   Todo.findOne({ _id: req.params.id }, function(err, todo) {
     if (err) {
@@ -61,7 +61,10 @@ router.put(function(req, res){
   });
 });
 
-router.delete(function(req, res) {
+router.delete('/:id', function(req, res) {
+
+  console.log("delete");
+
   Todo.remove({_id: req.params.id}, function(err, todo) {
     if (err) {
       return res.send(err);
